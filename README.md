@@ -1,5 +1,4 @@
-# NightTimeExtension ![image](https://github.com/iskulkarni22/NightTimeExtension/assets/99928280/8d334298-6916-4157-b4dd-ec53a0af610f)
-Chrome extension to toggle dark mode for websites you visit.
-Can also toggle if you want the extension to apply to all tabs or keep track of specific tabs.
+# Ark-X LMS Enhancer ![image](https://raw.githubusercontent.com/shadowofleaf96/Ark-X-LMS-Enhancer/23e0a1835ea67fcf66cf51eeb0db2dd784aa6cae/images/icon128.png)
+LMS Enhancer is a Chrome extension that Enhance Ark-X Learning Platform with Feature Requests like (Dark Mode, AutoScroll to Course in menu) and more
 
-<img width="316" alt="Screen Shot 2023-06-13 at 7 44 03 PM" src="https://github.com/iskulkarni22/NightTimeExtension/assets/99928280/dc760c09-f559-45ac-a4b5-e677eaaf6ee3">
+<img width="316" alt="Screen Shot 2023-06-13 at 7 44 03 PM" src="https://github.com/shadowofleaf96/Ark-X-LMS-Enhancer/blob/dev/Extension%20showcase.png?raw=true">
