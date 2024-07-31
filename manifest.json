@@ -1,0 +1,46 @@
+{
+  "name": "Ark-X LMS Enhancer",
+  "version": "2.0",
+  "description": "Enhance Ark-X LMS with Feature Requests like (Dark Mode, AutoScroll to Course in menu) and more",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "LMS Enhancer",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://arkx.academy/*",
+        "https://arkx-academy.gitbook.io/*",
+        "https://cdn.mycourse.app/*"
+      ],
+      "js": ["darkreader.js", "content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "scripting",
+    "storage",
+    "nativeMessaging"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';"
+  }
+}

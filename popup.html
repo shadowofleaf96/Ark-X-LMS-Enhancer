@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Ubuntu"
+      rel="stylesheet"
+    />
+    <title>Ark-X Enhancer</title>
+  </head>
+  <style>
+    body {
+      min-width: 300px;
+      text-align: center;
+      background-color: #2b1f83;
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Split the container into two columns */
+      grid-template-rows: auto auto 1fr; /* Three rows: h1, p, and .button */
+      gap: 10px; /* Adjust the gap between elements as needed */
+      align-items: center;
+      justify-items: center;
+    }
+
+    h1 {
+      font-family: "Ubuntu", sans-serif;
+      color: whitesmoke;
+      grid-row: 1 / span 2; /* Place h1 in the first row */
+      grid-column: 2; /* Place h1 in the second column (right) */
+    }
+
+    p {
+      font-family: "Ubuntu", sans-serif;
+      display: flex;
+      font-size: medium;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      color: whitesmoke;
+      grid-row: 3; /* Place p in the second row (center) */
+      grid-column: 1 / span 2; /* Span both columns for centering */
+    }
+
+    img {
+      height: 200px;
+      grid-row: 1 / span 2; /* Span two rows to cover h1 and p */
+      grid-column: 1; /* Place img in the first column (left) */
+    }
+
+    .button {
+      background-color: rgb(62, 108, 154);
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      height: 2rem;
+      width: 5rem;
+      border-radius: 1.5rem;
+      cursor: pointer;
+      grid-row: 4; /* Place .button in the third row */
+      grid-column: 1 / span 2; /* Span both columns for centering */
+    }
+
+    #dark {
+      padding-left: 0.25rem;
+      color: whitesmoke;
+      pointer-events: none;
+    }
+
+    #light {
+      padding-right: 0.25rem;
+      color: whitesmoke;
+      pointer-events: none;
+    }
+
+    .circle {
+      position: absolute;
+      height: 2rem;
+      width: 2rem;
+      border-radius: 1.5rem;
+      background-color: lightblue;
+      pointer-events: none;
+    }
+
+    @keyframes moveCircleRight {
+      from {
+        left: 0;
+      }
+      to {
+        left: 100%;
+        width: 2rem;
+        transform: translateX(-100%);
+      }
+    }
+
+    @keyframes moveCircleLeft {
+      from {
+        left: 100%;
+        width: 2rem;
+        transform: translateX(-100%);
+      }
+      to {
+        left: 0;
+      }
+    }
+
+    @keyframes backgroundPurple {
+      from {
+        background-color: rgb(62, 108, 154);
+      }
+      to {
+        background-color: rgb(108, 151, 230);
+      }
+    }
+
+    @keyframes backgroundBlue {
+      from {
+        background-color: rgb(108, 151, 230);
+      }
+      to {
+        background-color: rgb(62, 108, 154);
+      }
+    }
+  </style>
+
+  <body class="popup">
+    <img
+      src="https://cdn.mycourse.app/images/site-templates/8f5b3959fe8581d6253c3c5103434273.png"
+      alt="Main Img"
+    />
+    <h1>Ark-X LMS Enhancer</h1>
+    <p>Tweaks To Improve your Experience</p>
+    <!-- <select id="language-selector">
+      <option value="en">EN</option>
+      <option value="fr">FR</option>
+      <option value="ar">AR</option>
+    </select> -->
+    <div class="button">
+      <div style="visibility: hidden" id="dark">Dark</div>
+      <div style="visibility: hidden" id="light">Light</div>
+      <div class="circle"></div>
+    </div>
+    <!-- <div class="selectButton">
+        <input class="checkbox" type="checkbox" checked>Apply to all pages
+    </div> -->
+  </body>
+  <script type="module" src="./popup.js"></script>
+  </html>
