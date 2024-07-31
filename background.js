@@ -36,20 +36,20 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
 });
 
 // Listen for new tab creations
-chrome.tabs.onCreated.addListener((tabId, changeInfo) => {
-  if (changeInfo.status === "complete") {
-    applyDarkModeFromStorage(tabId);
-  }
+chrome.tabs.onCreated.addListener((tab) => {
+  applyDarkModeFromStorage(tab.id);
 });
 
 function applyDarkModeFromStorage(tabId) {
-  chrome.storage.sync.get([`darkMode_${tabId}`], (result) => {
-    const darkModeEnabled = result[`darkMode_${tabId}`];
-    console.log(darkModeEnabled);
-    if (darkModeEnabled) {
-      chrome.tabs.sendMessage(tabId, { action: "enableDarkMode" });
-    } else {
-      chrome.tabs.sendMessage(tabId, { action: "disableDarkMode" });
-    }
+  chrome.tabs.get(tabId, (tab) => {
+    const domain = new URL(tab.url).hostname;
+    chrome.storage.sync.get([`darkMode_${domain}`], (result) => {
+      const darkModeEnabled = result[`darkMode_${domain}`];
+      if (darkModeEnabled) {
+        chrome.tabs.sendMessage(tabId, { action: "enableDarkMode" });
+      } else {
+        chrome.tabs.sendMessage(tabId, { action: "disableDarkMode" });
+      }
+    });
   });
 }

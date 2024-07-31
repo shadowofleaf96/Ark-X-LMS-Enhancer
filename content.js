@@ -28,7 +28,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "enableDarkMode") {
     enableDarkMode()
       .then(() => {
-        chrome.storage.sync.set({ [`darkMode_${sender.tab.id}`]: true });
+        const domain = new URL(window.location.href).hostname;
+        chrome.storage.sync.set({ [`darkMode_${domain}`]: true });
         sendResponse({ status: "dark mode enabled" });
       })
       .catch((error) => {
@@ -37,7 +38,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   } else if (request.action === "disableDarkMode") {
     disableDarkMode()
       .then(() => {
-        chrome.storage.sync.set({ [`darkMode_${sender.tab.id}`]: false });
+        const domain = new URL(window.location.href).hostname;
+        chrome.storage.sync.set({ [`darkMode_${domain}`]: false });
         sendResponse({ status: "dark mode disabled" });
       })
       .catch((error) => {
@@ -75,12 +77,12 @@ function disableDarkMode() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  chrome.storage.sync.get([`darkMode_${sender.tab.id}`], (result) => {
-    const darkModeEnabled = result[`darkMode_${sender.tab.id}`];
+window.addEventListener("load", () => {
+  const domain = new URL(window.location.href).hostname;
+  chrome.storage.sync.get([`darkMode_${domain}`], (result) => {
+    const darkModeEnabled = result[`darkMode_${domain}`];
     if (darkModeEnabled) {
       enableDarkMode();
     }
   });
 });
-
